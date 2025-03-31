@@ -1,0 +1,29 @@
+{
+    "criteria": {
+        "smart_sapling": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "display": {
+        "description": "启用智能补种，种下新的树苗",
+        "icon": {
+            "id": "minecraft:oak_sapling",
+            "count": 1
+        },
+        "title": {"text":"来年春天"},
+        "announce_to_chat": false,
+        "frame": "task",
+        "hidden": false,
+        "show_toast": true
+    },
+    "requirements": [
+        [
+            "smart_sapling"
+        ]
+    ],
+    "sends_telemetry_event": false,
+    "parent": "vmn:tutorial/root",
+    "rewards": {
+        "function": "vmn:main/vmn/advancement_reward"
+    }
+}

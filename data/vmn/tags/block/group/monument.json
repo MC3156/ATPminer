@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:sea_lantern",
+        "minecraft:prismarine",
+        "minecraft:prismarine_bricks",
+        "minecraft:dark_prismarine"
+    ]
+}

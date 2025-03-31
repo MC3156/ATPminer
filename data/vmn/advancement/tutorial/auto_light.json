@@ -1,0 +1,29 @@
+{
+    "criteria": {
+        "auto_light": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "display": {
+        "description": "启用自动照明，在暗处自动安置火把",
+        "icon": {
+            "id": "minecraft:lantern",
+            "count": 1
+        },
+        "title": {"text":"驱逐黑暗"},
+        "announce_to_chat": false,
+        "frame": "task",
+        "hidden": false,
+        "show_toast": true
+    },
+    "requirements": [
+        [
+            "auto_light"
+        ]
+    ],
+    "sends_telemetry_event": false,
+    "parent": "vmn:tutorial/root",
+    "rewards": {
+        "function": "vmn:main/vmn/advancement_reward"
+    }
+}

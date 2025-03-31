@@ -1,0 +1,28 @@
+##计分板 1.21.4 2025.3.6更新
+
+scoreboard objectives add dp_vmn.pale_oak_log minecraft.mined:minecraft.pale_oak_log
+scoreboard objectives add dp_vmn.pale_oak_wood minecraft.mined:minecraft.pale_oak_wood
+scoreboard objectives add dp_vmn.stripped_pale_oak_log minecraft.mined:minecraft.stripped_pale_oak_log
+scoreboard objectives add dp_vmn.stripped_pale_oak_wood minecraft.mined:minecraft.stripped_pale_oak_wood
+scoreboard objectives add dp_vmn.pale_oak_planks minecraft.mined:minecraft.pale_oak_planks
+scoreboard objectives add dp_vmn.pale_oak_stairs minecraft.mined:minecraft.pale_oak_stairs
+scoreboard objectives add dp_vmn.pale_oak_slab minecraft.mined:minecraft.pale_oak_slab
+scoreboard objectives add dp_vmn.pale_oak_fence minecraft.mined:minecraft.pale_oak_fence
+scoreboard objectives add dp_vmn.pale_oak_fence_gate minecraft.mined:minecraft.pale_oak_fence_gate
+scoreboard objectives add dp_vmn.pale_oak_door minecraft.mined:minecraft.pale_oak_door
+scoreboard objectives add dp_vmn.pale_oak_trapdoor minecraft.mined:minecraft.pale_oak_trapdoor
+scoreboard objectives add dp_vmn.pale_oak_pressure_plate minecraft.mined:minecraft.pale_oak_pressure_plate
+scoreboard objectives add dp_vmn.pale_oak_button minecraft.mined:minecraft.pale_oak_button
+scoreboard objectives add dp_vmn.resin_block minecraft.mined:minecraft.resin_block
+scoreboard objectives add dp_vmn.resin_bricks minecraft.mined:minecraft.resin_bricks
+scoreboard objectives add dp_vmn.resin_brick_stairs minecraft.mined:minecraft.resin_brick_stairs
+scoreboard objectives add dp_vmn.resin_brick_slab minecraft.mined:minecraft.resin_brick_slab
+scoreboard objectives add dp_vmn.resin_brick_wall minecraft.mined:minecraft.resin_brick_wall
+scoreboard objectives add dp_vmn.chiseled_resin_bricks minecraft.mined:minecraft.chiseled_resin_bricks
+scoreboard objectives add dp_vmn.pale_moss_block minecraft.mined:minecraft.pale_moss_block
+scoreboard objectives add dp_vmn.pale_moss_carpet minecraft.mined:minecraft.pale_moss_carpet
+scoreboard objectives add dp_vmn.pale_hanging_moss minecraft.mined:minecraft.pale_hanging_moss
+scoreboard objectives add dp_vmn.pale_oak_leaves minecraft.mined:minecraft.pale_oak_leaves
+scoreboard objectives add dp_vmn.closed_eyeblossom minecraft.mined:minecraft.closed_eyeblossom
+scoreboard objectives add dp_vmn.open_eyeblossom minecraft.mined:minecraft.open_eyeblossom
+scoreboard objectives add dp_vmn.creaking_heart minecraft.mined:minecraft.creaking_heart

@@ -1,0 +1,24 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:oak_log",
+        "minecraft:spruce_log",
+        "minecraft:birch_log",
+        "minecraft:jungle_log",
+        "minecraft:acacia_log",
+        "minecraft:dark_oak_log",
+        "minecraft:crimson_stem",
+        "minecraft:warped_stem",
+        "minecraft:mangrove_log",
+        "minecraft:mangrove_roots",
+        "minecraft:cherry_log",
+        {
+            "id": "minecraft:pale_oak_log",
+            "required": false
+        },
+        {
+            "id": "minecraft:creaking_heart",
+            "required": false
+        }
+    ]
+}

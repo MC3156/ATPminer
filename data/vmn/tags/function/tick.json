@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "vmn:main/vmn/check_load",
+        "vmn:main/vmn/player_digging",
+        "vmn:main/vmn/marker_execute",
+        "vmn:main/vmn/reset_all"
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "criteria": {
+        "combination": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "display": {
+        "description": "启用联合采集，自动连锁同类方块",
+        "icon": {
+            "id": "minecraft:diamond_pickaxe",
+            "count": 1
+        },
+        "title": {"text":"效率提升"},
+        "announce_to_chat": false,
+        "frame": "task",
+        "hidden": false,
+        "show_toast": true
+    },
+    "requirements": [
+        [
+            "combination"
+        ]
+    ],
+    "sends_telemetry_event": false,
+    "parent": "vmn:tutorial/root",
+    "rewards": {
+        "function": "vmn:main/vmn/advancement_reward"
+    }
+}

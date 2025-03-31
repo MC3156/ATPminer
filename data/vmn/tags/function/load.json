@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "vmn:main/load/scoreboard",
+        "vmn:main/load/load_entity"
+    ]
+}

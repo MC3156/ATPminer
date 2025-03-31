@@ -1,0 +1,13 @@
+{
+    "values": [
+        "#vmn:tool/wooden_tools",
+        "#vmn:tool/stone_tools",
+        "#vmn:tool/iron_tools",
+        "#vmn:tool/golden_tools",
+        "#vmn:tool/diamond_tools",
+        "#vmn:tool/netherite_tools",
+        "minecraft:trident",
+        "minecraft:mace",
+        "minecraft:shears"
+    ]
+}

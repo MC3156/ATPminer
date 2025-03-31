@@ -1,0 +1,29 @@
+{
+    "criteria": {
+        "trigger": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "display": {
+        "description": "使用触发器查看自己的ATP高能连锁设置",
+        "icon": {
+            "id": "minecraft:golden_pickaxe",
+            "count": 1
+        },
+        "title": {"text":"高能时刻","color":"gold"},
+        "announce_to_chat": false,
+        "background": "minecraft:textures/block/white_terracotta.png",
+        "frame": "task",
+        "hidden": true,
+        "show_toast": true
+    },
+    "requirements": [
+        [
+            "trigger"
+        ]
+    ],
+    "sends_telemetry_event": false,
+    "rewards": {
+        "function": "vmn:main/vmn/advancement_reward"
+    }
+}

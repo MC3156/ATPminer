@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:generic",
+    "pools": [
+        {
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:hanging_roots"
+                }
+            ],
+            "rolls": 1.0
+        }
+    ]
+}

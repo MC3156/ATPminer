@@ -1,0 +1,29 @@
+{
+    "criteria": {
+        "range_farm": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "display": {
+        "description": "启用范围耕作，尝试大范围耕地",
+        "icon": {
+            "id": "minecraft:farmland",
+            "count": 1
+        },
+        "title": {"text":"开荒！"},
+        "announce_to_chat": false,
+        "frame": "task",
+        "hidden": false,
+        "show_toast": true
+    },
+    "requirements": [
+        [
+            "range_farm"
+        ]
+    ],
+    "sends_telemetry_event": false,
+    "parent": "vmn:tutorial/root",
+    "rewards": {
+        "function": "vmn:main/vmn/advancement_reward"
+    }
+}

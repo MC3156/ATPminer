@@ -1,0 +1,11 @@
+{
+    "condition": "minecraft:location_check",
+    "predicate": {
+        "light": {
+            "light": {
+                "max": 8,
+                "min": 0
+            }
+        }
+    }
+}
