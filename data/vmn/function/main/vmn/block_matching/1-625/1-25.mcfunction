@@ -1,0 +1,33 @@
+##1-25
+
+execute if score #block_value dp_vmn.temp matches 1 if block ~ ~ ~ minecraft:deepslate_diamond_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 2 if block ~ ~ ~ minecraft:raw_iron_block run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 2 if block ~ ~ ~ minecraft:deepslate_iron_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 3 if block ~ ~ ~ minecraft:raw_gold_block run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 3 if block ~ ~ ~ minecraft:deepslate_gold_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 4 if block ~ ~ ~ minecraft:coal_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 4 if block ~ ~ ~ minecraft:deepslate_coal_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 5 if block ~ ~ ~ minecraft:redstone_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 5 if block ~ ~ ~ minecraft:deepslate_redstone_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 6 if block ~ ~ ~ minecraft:lapis_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 6 if block ~ ~ ~ minecraft:deepslate_lapis_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 7 if block ~ ~ ~ minecraft:emerald_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 7 if block ~ ~ ~ minecraft:deepslate_emerald_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 8 if block ~ ~ ~ minecraft:copper_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 8 if block ~ ~ ~ minecraft:raw_copper_block run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 8 if block ~ ~ ~ minecraft:deepslate_copper_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 9 if block ~ ~ ~ minecraft:oak_log run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 10 if block ~ ~ ~ minecraft:spruce_log run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 11 if block ~ ~ ~ minecraft:birch_log run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 12 if block ~ ~ ~ minecraft:jungle_log run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 13 if block ~ ~ ~ minecraft:acacia_log run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 14 if block ~ ~ ~ minecraft:dark_oak_log run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 17 if block ~ ~ ~ minecraft:tall_grass run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 18 if block ~ ~ ~ minecraft:nether_gold_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 19 if block ~ ~ ~ minecraft:nether_quartz_ore run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 20 if block ~ ~ ~ minecraft:ancient_debris run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 21 if block ~ ~ ~ minecraft:mushroom_stem run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 22 if block ~ ~ ~ minecraft:red_mushroom_block run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 23 if block ~ ~ ~ minecraft:brown_mushroom_block run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 24 if block ~ ~ ~ minecraft:nether_wart_block run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 25 if block ~ ~ ~ minecraft:warped_wart_block run scoreboard players set #temp_execute dp_vmn.temp 1

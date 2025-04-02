@@ -5,10 +5,9 @@
         }
     },
     "display": {
-        "description": "启用联合采集，自动连锁同类方块",
+        "description": "启用联合采集，自动连锁同类方块\nEnable Unified Harvesting: Automatically chains same-type blocks",
         "icon": {
-            "id": "minecraft:diamond_pickaxe",
-            "count": 1
+            "id": "minecraft:diamond_pickaxe"
         },
         "title": {"text":"效率提升"},
         "announce_to_chat": false,

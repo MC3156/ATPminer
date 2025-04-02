@@ -1,6 +1,7 @@
 ##检测玩家挖掘方块计分项 2
 # 匹配映射，匹配联合组
 
+execute if score @s dp_vmn.ATPminer.sneaking_mode matches 1 if score @s dp_vmn.input_ctrl matches 1.. run scoreboard players set @s dp_vmn.sneaking_time 1
 execute unless score #block_value dp_vmn.temp matches -2147483648..2147483647 run function vmn:config/mineable_block
 execute if score @s dp_vmn.ATPminer.combination matches 1 if score #block_value dp_vmn.temp matches 1..2147483647 run advancement grant @s only vmn:tutorial/combination
 execute if score @s dp_vmn.ATPminer.combination matches 1 if score #block_value dp_vmn.temp matches 1..2147483647 unless score #temp_execute dp_vmn.temp matches 1 run function vmn:config/combination/scan_group

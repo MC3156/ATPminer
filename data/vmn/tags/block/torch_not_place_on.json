@@ -162,6 +162,8 @@
         "minecraft:end_gateway",
         "minecraft:end_portal",
         "minecraft:cocoa",
-        "minecraft:fire"
+        "minecraft:fire",
+
+        "#vmn:group/flowers"
     ]
 }

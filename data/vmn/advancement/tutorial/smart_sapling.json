@@ -5,10 +5,9 @@
         }
     },
     "display": {
-        "description": "启用智能补种，种下新的树苗",
+        "description": "启用智能补种，种下新的树苗\nEnable Smart Replanting: Plants new saplings automatically",
         "icon": {
-            "id": "minecraft:oak_sapling",
-            "count": 1
+            "id": "minecraft:oak_sapling"
         },
         "title": {"text":"来年春天"},
         "announce_to_chat": false,

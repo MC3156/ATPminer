@@ -17,4 +17,5 @@ kill @e[type=minecraft:marker,tag=dp_vmn_REPLANT]
 scoreboard players reset #block_value dp_vmn.temp
 
 #debug:输出连锁数量
-execute if score @p[tag=dp_vmn_TEMP] dp_vmn.ATPminer.debug matches 1 run tellraw @p[tag=dp_vmn_TEMP] ["§aDebug >>> §7DFS §e连锁数量：",{"score":{"name":"#count","objective":"dp_vmn.temp"},"color":"gold"}]
+execute if score @p[tag=dp_vmn_TEMP] dp_vmn.ATPminer.debug matches 1 if score @p[tag=dp_vmn_TEMP] dp_vmn.lang matches 1 run tellraw @p[tag=dp_vmn_TEMP] ["§aDebug >>> §7DFS §e连锁数量：",{"score":{"name":"#count","objective":"dp_vmn.temp"},"color":"gold"}]
+execute if score @p[tag=dp_vmn_TEMP] dp_vmn.ATPminer.debug matches 1 if score @p[tag=dp_vmn_TEMP] dp_vmn.lang matches 2 run tellraw @p[tag=dp_vmn_TEMP] ["§aDebug >>> §7DFS §eTotal Chains：",{"score":{"name":"#count","objective":"dp_vmn.temp"},"color":"gold"}]

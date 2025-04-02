@@ -5,10 +5,9 @@
         }
     },
     "display": {
-        "description": "启用快速落叶，在连锁伐木的基础上加速树叶枯萎",
+        "description": "启用快速落叶，在连锁伐木的基础上加速树叶枯萎\nEnable Fast Leaf Decay: Accelerates leaf decay after tree felling",
         "icon": {
-            "id": "minecraft:oak_leaves",
-            "count": 1
+            "id": "minecraft:oak_leaves"
         },
         "title": {"text":"新陈代谢"},
         "announce_to_chat": false,

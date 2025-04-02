@@ -41,3 +41,10 @@ execute if score @s dp_vmn.sea_pickle matches 1.. run scoreboard players set #bl
 execute if score @s dp_vmn.pale_hanging_moss matches 1.. run scoreboard players set #block_value dp_vmn.temp -8
 execute if score @s dp_vmn.closed_eyeblossom matches 1.. run scoreboard players set #block_value dp_vmn.temp -8
 execute if score @s dp_vmn.open_eyeblossom matches 1.. run scoreboard players set #block_value dp_vmn.temp -8
+execute if score @s dp_vmn.wildflowers matches 1.. run scoreboard players set #block_value dp_vmn.temp -8
+execute if score @s dp_vmn.leaf_litter matches 1.. run scoreboard players set #block_value dp_vmn.temp -8
+execute if score @s dp_vmn.firefly_bush matches 1.. run scoreboard players set #block_value dp_vmn.temp -8
+execute if score @s dp_vmn.bush matches 1.. run scoreboard players set #block_value dp_vmn.temp -8
+execute if score @s dp_vmn.tall_dry_grass matches 1.. run scoreboard players set #block_value dp_vmn.temp -8
+execute if score @s dp_vmn.short_dry_grass matches 1.. run scoreboard players set #block_value dp_vmn.temp -8
+execute if score @s dp_vmn.cactus_flower matches 1.. run scoreboard players set #block_value dp_vmn.temp -8

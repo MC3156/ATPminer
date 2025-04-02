@@ -10,6 +10,9 @@ execute if score #global.auto_farm dp_vmn.global_setting matches 1 if score @s A
 execute if score #global.auto_farm dp_vmn.global_setting matches 1 if score @s ATPminer matches 205 run scoreboard players set @s dp_vmn.ATPminer.auto_farm 0
 execute if score #global.cube_chain dp_vmn.global_setting matches 1 if score @s ATPminer matches 106 run scoreboard players set @s dp_vmn.ATPminer.cube_chain 1
 execute if score #global.cube_chain dp_vmn.global_setting matches 1 if score @s ATPminer matches 206 run scoreboard players set @s dp_vmn.ATPminer.cube_chain 0
+execute unless score #global.atp_miner dp_vmn.global_setting matches 1 if score @s ATPminer matches 208 run scoreboard players set @s dp_vmn.ATPminer.basic 1
+execute unless score #global.atp_miner dp_vmn.global_setting matches 1 if score @s ATPminer matches 108 run scoreboard players set @s dp_vmn.ATPminer.basic 0
+execute unless score #global.auto_light dp_vmn.global_setting matches 1 if score @s ATPminer matches 401 run function vmn:main/vmn/auto_light/auto_light_state
 execute if score @s dp_vmn.ATPminer.auto_farm matches 1 if score @s ATPminer matches 301 run scoreboard players set @s dp_vmn.ATPminer.farming_mode 2
 execute if score @s dp_vmn.ATPminer.auto_farm matches 1 if score @s ATPminer matches 302 run scoreboard players set @s dp_vmn.ATPminer.farming_mode 1
 execute if score @s dp_vmn.ATPminer.auto_farm matches 1 unless score @s dp_vmn.ATPminer.farming_mode matches 1..2 run scoreboard players set @a dp_vmn.ATPminer.farming_mode 1

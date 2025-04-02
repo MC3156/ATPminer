@@ -870,3 +870,12 @@ scoreboard players reset @a dp_vmn.pale_oak_leaves
 scoreboard players reset @a dp_vmn.closed_eyeblossom
 scoreboard players reset @a dp_vmn.open_eyeblossom
 scoreboard players reset @a dp_vmn.creaking_heart
+
+# 1.21.5 2025.4.1
+scoreboard players reset @a dp_vmn.wildflowers
+scoreboard players reset @a dp_vmn.leaf_litter
+scoreboard players reset @a dp_vmn.firefly_bush
+scoreboard players reset @a dp_vmn.bush
+scoreboard players reset @a dp_vmn.tall_dry_grass
+scoreboard players reset @a dp_vmn.short_dry_grass
+scoreboard players reset @a dp_vmn.cactus_flower

@@ -7,8 +7,8 @@
 
 # 一键复制卸载函数指令：/function vmn:config/uninstall/total_uninstall
 
-execute unless score #uninstall ATPminer_config matches 3156513 run tellraw @s ["§c请使用计分板密码确认卸载程序！§7(README有说明)§r"]
-execute if score #uninstall ATPminer_config matches 3156513 run tellraw @s ["§c请使用计分板密码确认卸载程序！§7(README有说明)§r"]
+execute unless score #uninstall ATPminer_config matches 3156513 if score @s dp_vmn.lang matches 2 run function vmn:main/vmn/lang/en_us/total_uninstall
+execute unless score #uninstall ATPminer_config matches 3156513 if score @s dp_vmn.lang matches 1 run function vmn:main/vmn/lang/zh_cn/total_uninstall
 execute if score #uninstall ATPminer_config matches 3156513 run function vmn:config/uninstall/scoreboard_uis
 execute if score #uninstall ATPminer_config matches 3156513 run data remove storage dp_vmn:1 TEMP
 
@@ -31,13 +31,14 @@ execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objec
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.global_setting
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.no_damage
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.sneaking_time
+execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.input_ctrl
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.AUTO_light_state
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.AUTO_light_timer
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.track_depth
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.rotation0
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.rotation1
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove ATPminer
-execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove AUTO_light
+execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.ATPminer.basic
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.ATPminer.combination
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.ATPminer.replant
 execute if score #uninstall ATPminer_config matches 3156513 run scoreboard objectives remove dp_vmn.ATPminer.fast_rot
@@ -66,4 +67,5 @@ execute if score #uninstall ATPminer_config matches 3156513 run kill @e[tag=dp_v
 execute if score #uninstall ATPminer_config matches 3156513 run kill @e[tag=dp_vmn_SUB]
 execute if score #uninstall ATPminer_config matches 3156513 run kill @e[tag=dp_vmn_TEMP]
 
-execute if score #uninstall ATPminer_config matches 3156513 run tellraw @s ["§c卸载成功！现在通过/datapack disable或直接删除文件\n并/reload即可抹除本数据包的一切痕迹！(可以不重启服务器或存档)\nATPminer_config计分板可以手动清除§r",{"text":"[点击复制指令]","color":"gold","hoverEvent":{"action":"show_text","contents":"§c删除控制卸载的计分板\n注意，你需要先禁用数据包，否则删除计分板后\n配置项会被TICK函数再注册§6§r"},"clickEvent":{"action":"suggest_command","value":"/scoreboard objectives remove ATPminer_config"}}]
+execute if score #uninstall ATPminer_config matches 3156513 if score @s dp_vmn.lang matches 1 run function vmn:main/vmn/lang/zh_cn/uni_suc
+execute if score #uninstall ATPminer_config matches 3156513 if score @s dp_vmn.lang matches 2 run function vmn:main/vmn/lang/en_us/uni_suc

@@ -5,10 +5,9 @@
         }
     },
     "display": {
-        "description": "启用范围耕作，尝试大范围耕地",
+        "description": "启用范围耕作，尝试大范围耕地\nEnable Area Farming: Prepares large-scale farmland",
         "icon": {
-            "id": "minecraft:farmland",
-            "count": 1
+            "id": "minecraft:farmland"
         },
         "title": {"text":"开荒！"},
         "announce_to_chat": false,

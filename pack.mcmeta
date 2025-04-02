@@ -1,6 +1,25 @@
 {
     "pack": {
-        "pack_format": 61,
-        "description": [{"text":"ATP高能连锁","color":"gold"},{"text":"1.21.4","color":"light_purple"}]
+        "pack_format": 71,
+        "description": [{"text":"ATP高能连锁","color":"gold"},{"text":"1.21~1.21.5","color":"light_purple"}],
+        "supported_formats": {
+            "max_inclusive": 71,
+            "min_inclusive": 48
+        }
+    },
+    "overlays": {
+        "entries": [
+            {
+                "directory": "atpm1212",
+                "formats": {
+                    "max_inclusive": 71,
+                    "min_inclusive": 57
+                }
+            },
+            {
+                "directory": "atpm1215",
+                "formats": 71
+            }
+        ]
     }
 }

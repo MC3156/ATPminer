@@ -5,10 +5,9 @@
         }
     },
     "display": {
-        "description": "启用矩形挖掘，使用参数配置，以规整的立方体空间连锁挖掘",
+        "description": "启用矩形挖掘，使用参数配置，以规整的立方体空间连锁挖掘\nEnable Cuboid Mining: Mines blocks in configured rectangular spaces",
         "icon": {
-            "id": "minecraft:smooth_stone",
-            "count": 1
+            "id": "minecraft:smooth_stone"
         },
         "title": {"text":"方块的魅力"},
         "announce_to_chat": false,

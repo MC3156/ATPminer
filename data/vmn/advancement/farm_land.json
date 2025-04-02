@@ -76,10 +76,10 @@
                         "value": {
                             "type": "minecraft:score",
                             "target": {
-                                "type": "minecraft:fixed",
-                                "name": "#global.atp_miner"
+                                "type": "minecraft:context",
+                                "target": "this"
                             },
-                            "score": "dp_vmn.global_setting"
+                            "score": "dp_vmn.ATPminer.basic"
                         },
                         "range": {
                             "max": 0

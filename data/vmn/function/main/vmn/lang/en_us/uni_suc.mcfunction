@@ -1,0 +1,3 @@
+##en_us
+
+tellraw @s ["§cUninstallation successful! Now use /datapack disable or delete files directly and /reload to completely remove all traces of this datapack! (No server/world restart needed) ATPminer_config scoreboard can be manually removed§r",{"text":"[Click to Copy Command]","color":"gold","hoverEvent":{"action":"show_text","contents":"§cRemove the uninstall control scoreboard\nNote: You must disable the datapack first, otherwise\nthe config will be re-registered by TICK functions§6§r"},"clickEvent":{"action":"suggest_command","value":"/scoreboard objectives remove ATPminer_config"}}]

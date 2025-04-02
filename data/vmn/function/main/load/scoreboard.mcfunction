@@ -34,6 +34,7 @@ scoreboard objectives add dp_vmn.persistance dummy
 scoreboard objectives add dp_vmn.global_setting dummy
 scoreboard objectives add dp_vmn.no_damage dummy
 scoreboard objectives add dp_vmn.sneaking_time minecraft.custom:minecraft.sneak_time
+scoreboard objectives add dp_vmn.input_ctrl dummy
 scoreboard objectives add dp_vmn.AUTO_light_state dummy
 scoreboard objectives add dp_vmn.AUTO_light_timer dummy
 scoreboard objectives add dp_vmn.track_depth dummy
@@ -49,8 +50,9 @@ scoreboard objectives add dp_vmn.rotation1 dummy
 # 模式触发计分板 (前缀：dp_vmn.ATPminer)
 # combination:联合模式(开/关)
 scoreboard objectives add ATPminer trigger ["§6⚡§eATPminer§6⚡§r"]
-scoreboard objectives add AUTO_light trigger ["§6🔥§r"]
-scoreboard objectives add ATPminer_config trigger ["§6⚡§7ATPM参数配置§6⚡§r"]
+# scoreboard objectives add AUTO_light trigger ["§6🔥§r"]
+scoreboard objectives add ATPminer_config trigger ["§6⚡§7ATPM config§6⚡§r"]
+scoreboard objectives add dp_vmn.lang dummy
 scoreboard objectives add dp_vmn.ATPminer.combination dummy
 scoreboard objectives add dp_vmn.ATPminer.replant dummy
 scoreboard objectives add dp_vmn.ATPminer.fast_rot dummy
@@ -62,6 +64,7 @@ scoreboard objectives add dp_vmn.ATPminer_config.height dummy
 scoreboard objectives add dp_vmn.ATPminer_config.depth dummy
 scoreboard objectives add dp_vmn.ATPminer.farming_mode dummy
 scoreboard objectives add dp_vmn.ATPminer.debug dummy
+scoreboard objectives add dp_vmn.ATPminer.basic dummy
 
 # 处理
 scoreboard players reset * dp_vmn.temp

@@ -873,3 +873,12 @@ execute if score @s dp_vmn.sneaking_time matches 1 if score @s dp_vmn.pale_oak_l
 execute if score @s dp_vmn.closed_eyeblossom matches 1.. run scoreboard players set #block_value dp_vmn.temp 853
 execute if score @s dp_vmn.open_eyeblossom matches 1.. run scoreboard players set #block_value dp_vmn.temp 854
 execute if score @s dp_vmn.sneaking_time matches 1 if score @s dp_vmn.creaking_heart matches 1.. run scoreboard players set #block_value dp_vmn.temp 855
+
+# 1.21.5 2025.4.1
+execute if score @s dp_vmn.wildflowers matches 1.. run scoreboard players set #block_value dp_vmn.temp 856
+execute if score @s dp_vmn.leaf_litter matches 1.. run scoreboard players set #block_value dp_vmn.temp 857
+execute if score @s dp_vmn.firefly_bush matches 1.. run scoreboard players set #block_value dp_vmn.temp 858
+execute if score @s dp_vmn.bush matches 1.. run scoreboard players set #block_value dp_vmn.temp 859
+execute if score @s dp_vmn.tall_dry_grass matches 1.. run scoreboard players set #block_value dp_vmn.temp 860
+execute if score @s dp_vmn.short_dry_grass matches 1.. run scoreboard players set #block_value dp_vmn.temp 860
+execute if score @s dp_vmn.cactus_flower matches 1.. run scoreboard players set #block_value dp_vmn.temp 861

@@ -5,10 +5,9 @@
         }
     },
     "display": {
-        "description": "启用范围耕作，大范围种植农作物",
+        "description": "启用范围耕作，大范围种植农作物\nEnable Area Farming: Plants crops in large areas",
         "icon": {
-            "id": "minecraft:wheat",
-            "count": 1
+            "id": "minecraft:wheat"
         },
         "title": {"text":"我有一个麦田梦"},
         "announce_to_chat": false,

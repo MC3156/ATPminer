@@ -1,0 +1,342 @@
+The datapack places most customizable configuration files in the function/config folder and tags folder. Below is a rough guide on how to modify or add configurations;
+The appendix at the end of this document records the default block/group-ID mappings;
+If you have questions about this documentation, please contact the author through the channel where you obtained this datapack (refer to README.md).
+((The English translation is provided by DeepSeek.))
+
+###### --0.Changelog.0-- ######
+
+2025.3: 
+    Initial release; 
+    Updated for 1.21.4; 
+    Updated for 1.21.5; Added bilingual support; Fix some bugs;
+
+###### --1.Configuration Files.1-- ######
+
+##--Basic Management
+    Upon initial load, the datapack only enables basic chain mining, auto-lighting and parameter configuration - other features are locked by default;
+    Players can use /trigger ATPminer to access the menu in-game, but only admins can access global settings. Choose "Custom" or "Force Enable" in global settings to unlock other features
+    Admins will see notifications when players use /trigger menu. To disable: /gamerule sendCommandFeedback false
+    This command also disables other command feedback, preventing notification spam from other players' menu usage. Re-enable when command feedback is needed
+    Global parameter configuration:
+        1.Sub-threads [Maximum blocks processed per tick in each async chain event①, default 64]
+            Adjust based on server hardware. Limits chain calculation per tick - higher values mean faster chains (64 means 1280 blocks per second), lower values improve performance (values below 16 may interrupt searches and are not recommended)
+            This datapack uses DFS pre-attempt③, automatically switching to async chain④ for large quantities, significantly reducing server crashes from high mspt due to heavy performance consumption
+            Note: This is per-event limit. When 2 players chain large quantities simultaneously, thread count doubles. Avoid multiple players doing large-scale chains simultaneously (small chains have minimal impact)
+        2.Search limit [Maximum blocks searchable per chain event, default 1048576]
+            This is theoretical - practical limits (chain distance, tool durability etc.) usually prevent reaching max (unless intentionally triggered). Adjust as needed (performance-wise, this is secondary)
+            Determines maximum blocks that can be searched and mined per chain event. Won't be lower than DFS attempt value
+        3.DFS attempt [When search exceeds this block count without completion, switch to async chain (see note 3), default 640]
+            Affects when players mine beyond this quantity, using "non-instant" step-by-step search. Below 640 blocks can be processed instantly; above triggers async
+            Lower values effectively disable DFS (not recommended unless necessary). Higher values cause brief server lag during large chains; excessively high causes continuous lag until crash
+            Note: For player experience, DFS feels bad ("tunnel" mining) when unable to mine all blocks. Even if below 640, async chain (spherical) is used when tool durability or conditions prevent complete mining
+        4.Search iterations [Maximum ticks per async chain event, default 32768]
+            Determines maximum duration per event (sub-threads × iterations = max limit, e.g. 64×32768). Rarely reaches limit in practice. Adjust as needed (performance-wise, this is secondary)
+    Notes:
+        ①Async chain event: Visual spreading process, not instant chain mining. Automatically used when search exceeds DFS attempt (BFS-like). Processes partial blocks per tick (sub-thread count) to prevent server crashes
+        ②TICK: Minecraft game loop cycle. 1 tick ≈ 0.05s real time. Normally 20 ticks/sec. High server mspt (from heavy calculations like many mobs/players) reduces TPS, causing lag or crashes
+        ③DFS pre-attempt: Depth-First Search algorithm ("tunnel" approach) using recursive functions to instantly process large quantities. DFS pre-attempt aborts search when exceeding fixed value (e.g. searching stone - infinite world quantity could crash server)
+        ④Async chain: Processes excessive blocks incrementally per tick (BFS chain). "Carpet search" spreads spherically, gradually chaining all blocks. Used when DFS pre-attempt reaches max
+
+##--How to add new chainable blocks (including mod blocks)?>>config
+    (Summary: Modify scoreboard, block_matching, mineable_block, reset_score and exp_orb in data/vmn/function/config by following examples.)
+    Open data/vmn/function/config to see folders and mcfunction files. Locate 5 mcfunction files (scoreboard, block_matching, mineable_block, reset_score, exp_orb);
+    These contain default chainable block lists. Initial lines are comments - add new sections following commented format (format errors make configs ineffective);
+    exp_orb is optional - only edit if block drops XP;
+    ⚠️Note: To modify custom scoreboard names in scoreboard file, first disable datapack, use /scoreboard to delete old scoreboard, then reload and enable datapack (to prevent naming conflicts).
+
+##--How to disable/uninstall datapack or specific blocks/groups
+    Add sections in data/vmn/function/config/uninstall/black_list to temporarily disable block chains;
+    Comment out group checks in data/vmn/function/config/combination/scan_group (use #);
+    For complete datapack data cleanup, see methods in data/vmn/function/config/uninstall/total_uninstall.
+
+##--How to add blocks to existing chain groups?>>combination
+    (Summary: In data/vmn/function/config/combination/score, find target group, add chainable blocks following examples (only scoreboard name varies), then add block IDs to corresponding group file in data/vmn/tags/block/group)
+    First ensure block is configured in basic files with associated scoreboard;
+    Open data/vmn/function/config/combination/score. If block chains with ore group, open ores file and add new line following format;
+    execute if score @s <scoreboard_name> matches 1.. run scoreboard players set #block_value dp_vmn.temp <group_ID>
+    Where <scoreboard_name> is mining event name defined in basic config, -2 is ore group ID (-3 for log group);
+    Then open data/vmn/tags/block/group/ores, add new block ID following JSON format (strict syntax - don't omit punctuation);
+    Block IDs can be found via F3+H, Wiki or mod sites;
+    Note: Blocks can't belong to multiple groups - first matched group applies. To remove group members, reverse above steps;
+    Note: tags folders exist in both vmn and minecraft paths - pay attention to paths.
+
+##--How to add new chain groups?>>combination
+    (Summary: In combination/score, create .mcfunction file with unique ID between -10000~-2, follow existing examples. Create same-name .json in data/vmn/tags/block/group. Add new sections in scan_group and matching_group following examples)
+    In data/vmn/function/config/combination/score, create .mcfunction file (e.g. example.mcfunction);
+    In data/vmn/tags/block/group, create same-name .json file (e.g. example.json);
+    Note: Group names can only contain lowercase a-z, 0-9, _, -, .;
+    Add new sections in scan_group and matching_group following examples;
+    Note: <group_ID> is customizable integer between -10000~-2, unique across groups. <filename> is above example (no extensions);
+    Finally, add blocks to new group following previous tutorial to make it functional.
+
+##--How to add recognizable tools? (For items without tool's max_damage component, e.g. mod tools)
+    [For version compatibility, using execute if predicate instead of execute if items] (Note: Path not in config)
+    Open data/vmn/function/main/vmn/check_tool2 and check_tool3
+    If tool shares durability with vanilla tools, add to existing tags. Example:
+    >>>Tool A has 1561 durability. check_tool3 contains:
+        execute if predicate vmn:if_items/tool/diamond_tools run scoreboard players set #dfs_max_damage dp_vmn.temp 1561
+        Where vmn:if_items/tool/diamond_tools is predicate, 1561 is max durability. Opening vmn/predicate/if_items/tool/diamond_tools shows:
+        "mainhand": {"items": "#vmn:tool/diamond_tools"}
+        Then vmn/tags/tool/diamond_tools lists vanilla diamond tool IDs - add Tool A's namespace ID here
+        Only need to add namespace here - no other file modifications
+    If tool doesn't share durability group (e.g. shears at 238 have no such tag group):
+    >>>For tools B and C both at 238 durability, two options:
+        1.Create new predicates:
+            In data/vmn/predicate/if_items/tool, create new .json (e.g. super_tool.json) following examples, changing "items" to tool namespace ID
+            E.g. for Tool B with mod namespace abc and ID super_tool: "items":"abc:super_tool"
+            In check_tool2 and check_tool3, add lines following format. For check_tool3:
+            execute if predicate vmn:if_items/tool/<filename> run scoreboard players set #dfs_max_damage dp_vmn.temp <max_durability>
+            Following example: <filename> becomes super_tool, <max_durability> becomes 238. Similarly modify check_tool2;
+            Repeat for Tool C;
+            Finally, add "abc:super_tool" to data/vmn/tags/item/damage_tool.
+        2.Create new tool tag:
+            In data/vmn/tags/item/tool, create new .json (e.g. all_tools.json), add all tools sharing max durability following format;
+            Following method 1, create predicate with "items":"#vmn:tool/all_tools"
+            Add lines to check_tool2 and check_tool3 following format (see method 1);
+            (If group durability is 238, you could add shears here)
+            Finally, add "#vmn:tool/all_tools" to data/vmn/tags/item/damage_tool.
+
+##--How to add new "no durability cost" blocks? (e.g. flowers/grass, only affects shears)
+    Add blocks to data/vmn/tags/block/no_damage following format.
+
+##--What are other datapack files for? Can they be modified?
+    data folder contains all data. Some configs can be modified simply. Core parts not recommended for general users to modify to avoid issues;
+    1.data/minecraft/tags/function/load and tick are initialization and game loop function tags (core);
+    2.data/vmn/advancement, item_modifier, loot_table contain condition checks, probability simulations and loot drops (core);
+    3.data/vmn/tags contains tag files for operating/matching element groups. function folder contains function tags (core);
+    4.data/vmn/tags/block and item are configurable:
+        group contains chain group tags (covered above) - can add new groups/members;
+        check_dirts.json checks soils for auto-replanting saplings (default vanilla dirt);
+        farm_dirt.json checks farmable soils;
+        no_damage covered above;
+        Three torch files are for auto-lighting block checks;
+    5.data/vmn/tags/item configurable:
+        tool contains tool groups for max durability (covered above);
+        farm/farm_tools.json contains farming tools;
+        valid_seeds.json contains range-plantable seeds;
+        damage_tool.json lists all recognized tools for durability checks;
+        whitelist_tool.json lists durability-exempt items (armor, special tools etc.);
+    6.data/vmn/predicate contains condition check predicates:
+        location checks positions;
+        if_block/torch files check auto-lighting blocks;
+        if_items/damage_tool.json and whitelist_tool.json check corresponding tags;
+        if_items/offhand_water_bucket.json checks offhand water buckets;
+        if_items/tool checks tool tags (covered above);
+    7.data/vmn/function contains execution code - datapack's core:
+        main contains critical code - not recommended to modify without understanding function calls;
+        config is customizable:
+            farmland contains crop range planting configs - modify following examples to add new plantable seeds;
+            smart_replant contains smart replanting - farmland for crops, other files for saplings;
+            vanilla contains vanilla block essentials - usually no modification needed;
+            Add/modify features by editing all related configs following rules and examples.
+    8.Supplemental tag format notes:
+        Tags use format like {"id":"minecraft:mangrove_log","required":false} (whitespace omitted) for mod removal compatibility;
+        Example shows 1.19 mangrove log. "required":false ensures tag remains valid in pre-1.19 versions (ignores this ID).
+
+###### --2.Compatibility & Issues.2-- ######
+
+##--Compatibility:
+    1.Datapack commands bypass land protection plugins - incompatible with land claims;
+    2.Some plugins/mods alter vanilla command logic - disable them or this datapack if issues arise;
+    3.Few server cores (e.g. Folia) don't support datapacks. Most plugin/mod/vanilla servers do;
+    4.[With certain mods] rare damage tag misapplication may prevent item stacking (can be deliberately triggered);
+    5.Reload may show "Failed to load" errors in some versions - normal for version compatibility (different versions ignore incompatible formats). If server disables features due to errors, disable datapack (report severe cases);
+
+##--Possible Questions:
+    1.Player: Why aren't some features working?
+      First check if globally enabled, then check for conflicts with other enabled features;
+    2.Player: Why does chain mining stop after small area?
+      Common in large chains - usually from held item changes. Stackable items changing count ends chains early (solution: hold unrelated items, full stacks, or non-stackable tools);
+    3.What are the □ symbols in settings?
+      Actually fire🔥 and lock🔒🔓 icons. Low versions (e.g. 1.18) without forced Unicode fonts don't display them. Generally: red□=locked, green□=unlocked;
+    4.Player: Why no glass chains? Why some blocks chain but others don't?
+      Glass theoretically can chain (has glass and pane groups) but may lack valid mining tools. Common blocks require hotkey (README.md lists default non-hotkey blocks);
+
+##--Beta Bugs:
+    1."Unbreakable" hoes can't range-farm;
+    2."Rectangle mining" mode may consume regular tool durability for flower/grass groups;
+
+###### --3.Appendix[Item & Group Mappings].3-- ######
+
+##36 groups, 855 vanilla blocks; "*"=no sneak required; "@"=no durability cost
+
+##Chain Groups
+    *Ores-2  *Logs-3  Soils-4  Leaves-5  @Corals-6  @Mature Crops-7  @Flowers-8  *Fungi-9  *Coral Blocks-10
+    *Stripped Logs-11  Stone-12  Ocean Monument-13  Nether Fortress-14  Nether-15  End City-16  Wool-17  Carpets-18  Terracotta-19  Concrete-20
+    Powders-21  Glazed Terracotta-22  Glass-23  Glass Panes-24  Candles-25  Banners-26  Beds-27  Anvils-28  Rails-29  Bastion-30
+    Sculk-31  Ice-32  Soul-33  Obsidian-34  *Melons-35  Froglight-36
+
+##Vanilla Blocks
+    (Deepslate)Diamond Ore1  (Deepslate)Iron Ore/Raw Iron2  (Deepslate)Gold Ore/Raw Gold3  (Deepslate)Coal Ore4  (Deepslate)Redstone Ore5
+    (Deepslate)Lapis Ore6  (Deepslate)Emerald Ore7  (Deepslate)Copper Ore/Raw Copper8  Oak Log9  Spruce Log10
+    Birch Log11  Jungle Log12  Acacia Log13  Dark Oak Log14  Cherry Log15
+    Mangrove Log/Roots16  Grass/Tall Grass17  Nether Gold Ore18  Nether Quartz Ore19  Ancient Debris20
+    Mushroom Stem21  Red Mushroom Block22  Brown Mushroom Block23  Nether Wart Block24  Warped Wart Block25
+    Shroomlight26  Crimson Stem27  Warped Stem28  Dandelion29  Poppy30
+    Orchid31  Allium32  Azure Bluet33  Red Tulip34  Pink Tulip35
+    White Tulip36  Orange Tulip37  Oxeye Daisy38  Cornflower39  Lily of the Valley40
+    Wither Rose41  Torchflower42  Sunflower43  Lilac44  Rose Bush45
+    Peony46  Pitcher Plant47  Oak Leaves48  Birch Leaves49  Acacia Leaves50
+    Azalea Leaves51  Cherry Leaves52  Jungle Leaves53  Spruce Leaves54  Dark Oak Leaves55
+    Mangrove Leaves56  Flowering Azalea Leaves57  Mature Pitcher Plant58  Mature Wheat59  Mature Beetroot60
+    Torchflower (plant check)61  Mature Carrot62  Mature Potato63  Grass Block64  Podzol65
+    Mycelium66  Dirt Path67  Dirt68  Coarse Dirt69  Rooted Dirt70
+    Mud71  Muddy Mangrove Roots72  Clay73  Gravel74  Sand75
+    Red Sand76  Tube Coral Block77  Brain Coral Block78  Bubble Coral Block79  Fire Coral Block80
+    Horn Coral Block81  Dead Tube Coral Block82  Dead Brain Coral Block83  Dead Bubble Coral Block84  Dead Fire Coral Block85
+    Dead Horn Coral Block86  Tube Coral87  Brain Coral88  Bubble Coral89  Fire Coral90
+    Horn Coral91  Dead Tube Coral92  Dead Brain Coral93  Dead Bubble Coral94  Dead Fire Coral95
+    Dead Horn Coral96  Tube Coral Fan97  Brain Coral Fan98  Bubble Coral Fan99  Fire Coral Fan100
+    Horn Coral Fan101  Dead Tube Coral Fan102  Dead Brain Coral Fan103  Dead Bubble Coral Fan104  Dead Fire Coral Fan105
+    Dead Horn Coral Fan106   Dead Tube Coral Wall Fan107   Dead Brain Coral Wall Fan108   Dead Bubble Coral Wall Fan109   Dead Fire Coral Wall Fan110
+    Dead Horn Coral Wall Fan111   Dead Tube Coral Wall Fan112   Dead Brain Coral Wall Fan113   Dead Bubble Coral Wall Fan114   Dead Fire Coral Wall Fan115
+    Dead Horn Coral Wall Fan116   Stripped Oak Log117   Stripped Spruce Log118   Stripped Birch Log119   Stripped Jungle Log120
+    Stripped Acacia Log121   Stripped Dark Oak Log122   Stripped Cherry Log123   Stripped Mangrove Log124   Stripped Crimson Stem125
+    Stripped Warped Stem126   Stone127   Cobblestone128   Mossy Cobblestone129   Granite130
+    Diorite131   Andesite132   Deepslate133   Cobbled Deepslate134   Tuff135
+    Sandstone136   Red Sandstone137   Dripstone Block138   Smooth Basalt139   Calcite140
+    Sea Lantern141   Prismarine142   Prismarine Bricks143   Dark Prismarine144   Nether Brick145
+    Nether Brick Stairs146   Nether Brick Slab147   Nether Brick Fence148   Netherrack149   Magma Block150
+    Crimson Nylium151   Warped Nylium152   Blackstone153   Basalt154   Purpur Block155
+    End Stone Bricks156   Purpur Pillar157   Purpur Stairs158   Purpur Slab159   White Wool160
+    Light Gray Wool161   Gray Wool162   Black Wool163   Brown Wool164   Red Wool165
+    Orange Wool166   Yellow Wool167   Cyan Wool168   Pink Wool169   Magenta Wool170
+    Purple Wool171   Blue Wool172   Light Blue Wool173   Green Wool174   Lime Wool175
+    White Carpet176   Light Gray Carpet177   Gray Carpet178   Black Carpet179   Brown Carpet180
+    Red Carpet181   Orange Carpet182   Yellow Carpet183   Cyan Carpet184   Pink Carpet185
+    Magenta Carpet186   Purple Carpet187   Blue Carpet188   Light Blue Carpet189   Green Carpet190
+    Lime Carpet191   White Terracotta192   Light Gray Terracotta193   Gray Terracotta194   Black Terracotta195
+    Brown Terracotta196   Red Terracotta197   Orange Terracotta198   Yellow Terracotta199   Cyan Terracotta 200
+    Pink Terracotta201   Magenta Terracotta202   Purple Terracotta203   Blue Terracotta204   Light Blue Terracotta205
+    Green Terracotta206   Lime Terracotta207   White Concrete208   Light Gray Concrete209   Gray Concrete210
+    Black Concrete211   Brown Concrete212   Red Concrete213   Orange Concrete214   Yellow Concrete215
+    Cyan Concrete216   Pink Concrete217   Magenta Concrete218   Purple Concrete219   Blue Concrete220
+    Light Blue Concrete221   Green Concrete222   Lime Concrete223   White Concrete Powder224   Light Gray Concrete Powder225
+    Gray Concrete Powder226   Black Concrete Powder227   Brown Concrete Powder228   Red Concrete Powder229   Orange Concrete Powder230
+    Yellow Concrete Powder231   Cyan Concrete Powder232   Pink Concrete Powder233   Magenta Concrete Powder234   Purple Concrete Powder235
+    Blue Concrete Powder236   Light Blue Concrete Powder237   Green Concrete Powder238   Lime Concrete Powder239   White Glazed Terracotta240
+    Light Gray Glazed Terracotta241   Gray Glazed Terracotta242   Black Glazed Terracotta243   Brown Glazed Terracotta244   Red Glazed Terracotta245
+    Orange Glazed Terracotta246   Yellow Glazed Terracotta247   Cyan Glazed Terracotta248   Pink Glazed Terracotta249   Magenta Glazed Terracotta250
+    Purple Glazed Terracotta251   Blue Glazed Terracotta252   Light Blue Glazed Terracotta253   Green Glazed Terracotta254   Lime Glazed Terracotta255
+    White Stained Glass256   Light Gray Stained Glass257   Gray Stained Glass258   Black Stained Glass259   Brown Stained Glass260
+    Red Stained Glass261   Orange Stained Glass262   Yellow Stained Glass263   Cyan Stained Glass264   Pink Stained Glass265
+    Magenta Stained Glass266   Purple Stained Glass267   Blue Stained Glass268   Light Blue Stained Glass269   Green Stained Glass270
+    Lime Stained Glass271   White Stained Glass Pane272   Light Gray Stained Glass Pane273   Gray Stained Glass Pane274   Black Stained Glass Pane275
+    Brown Stained Glass Pane276   Red Stained Glass Pane277   Orange Stained Glass Pane278   Yellow Stained Glass Pane279   Cyan Stained Glass Pane280
+    Pink Stained Glass Pane281   Magenta Stained Glass Pane282   Purple Stained Glass Pane283   Blue Stained Glass Pane284   Light Blue Stained Glass Pane285
+    Green Stained Glass Pane286   Lime Stained Glass Pane287   White Candle288   Light Gray Candle289   Gray Candle290
+    Black Candle291   Brown Candle292   Red Candle293   Orange Candle294   Yellow Candle295
+    Cyan Candle296   Pink Candle297   Magenta Candle298   Purple Candle299   Blue Candle300
+    Light Blue Candle301   Green Candle302   Lime Candle303   White Banner304   Light Gray Banner305
+    Gray Banner306   Black Banner307   Brown Banner308   Red Banner309   Orange Banner310
+    Yellow Banner311   Cyan Banner312   Pink Banner313   Magenta Banner314   Purple Banner315
+    Blue Banner316   Light Blue Banner317   Green Banner318   Lime Banner319   White Bed320
+    Light Gray Bed321   Gray Bed322   Black Bed323   Brown Bed324   Red Bed325
+    Orange Bed326   Yellow Bed327   Cyan Bed328   Pink Bed329   Magenta Bed330
+    Purple Bed331   Blue Bed332   Light Blue Bed333   Green Bed334   Lime Bed335
+    Candle336   Glass337   Terracotta338   Glass Pane339   Brown Mushroom340
+    Red Mushroom341   Fern342   Dead Bush343   Pink Petals344   Spore Blossom345
+    Crimson Roots346   Warped Roots347   Nether Sprouts348   Large Fern349   Lily Pad350
+    Seagrass351   Tall Seagrass352   Sea Pickle353   Anvil354   Chipped Anvil355
+    Damaged Anvil356   Rail357   Powered Rail358   Detector Rail359   Activator Rail360
+    Oak Wood361   Stripped Oak Wood362   Oak Planks363   Oak Stairs364   Oak Slab365
+    Oak Fence366   Oak Fence Gate367   Oak Door368   Oak Trapdoor369   Oak Pressure Plate370
+    Oak Button371   Spruce Wood372   Stripped Spruce Wood373   Spruce Planks374   Spruce Stairs375
+    Spruce Slab376   Spruce Fence377   Spruce Fence Gate378   Spruce Door379   Spruce Trapdoor380
+    Spruce Pressure Plate381   Spruce Button382   Birch Wood383   Stripped Birch Wood384   Birch Planks385
+    Birch Stairs386   Birch Slab387   Birch Fence388   Birch Fence Gate389   Birch Door390
+    Birch Trapdoor391   Birch Pressure Plate392   Birch Button393   Jungle Wood394   Stripped Jungle Wood395
+    Jungle Planks396   Jungle Stairs397   Jungle Slab398   Jungle Fence399   Jungle Fence Gate400
+    Jungle Door401   Jungle Trapdoor402   Jungle Pressure Plate403   Jungle Button404   Acacia Wood405
+    Stripped Acacia Wood406   Acacia Planks407   Acacia Stairs408   Acacia Slab409   Acacia Fence410
+    Acacia Fence Gate411   Acacia Door412   Acacia Trapdoor413   Acacia Pressure Plate414   Acacia Button415
+    Dark Oak Wood416   Stripped Dark Oak Wood417   Dark Oak Planks418   Dark Oak Stairs419   Dark Oak Slab420
+    Dark Oak Fence421   Dark Oak Fence Gate422   Dark Oak Door423   Dark Oak Trapdoor424   Dark Oak Pressure Plate425
+    Dark Oak Button426   Mangrove Wood427   Stripped Mangrove Wood428   Mangrove Planks429   Mangrove Stairs430
+    Mangrove Slab431   Mangrove Fence432   Mangrove Fence Gate433   Mangrove Door434   Mangrove Trapdoor435
+    Mangrove Pressure Plate436   Mangrove Button437   Cherry Wood438   Stripped Cherry Wood439   Cherry Planks440
+    Cherry Stairs441   Cherry Slab442   Cherry Fence443   Cherry Fence Gate444   Cherry Door445
+    Cherry Trapdoor446   Cherry Pressure Plate447   Cherry Button448   Crimson Hyphae449   Stripped Crimson Hyphae450
+    Crimson Planks451   Crimson Stairs452   Crimson Slab453   Crimson Fence454   Crimson Fence Gate455
+    Crimson Door456   Crimson Trapdoor457   Crimson Pressure Plate458   Crimson Button459   Warped Hyphae460
+    Stripped Warped Hyphae461   Warped Planks462   Warped Stairs463   Warped Slab464   Warped Fence465
+    Warped Fence Gate466   Warped Door467   Warped Trapdoor468   Warped Pressure Plate469   Warped Button470
+    Bamboo Block471   Stripped Bamboo Block472   Bamboo Planks473   Bamboo Mosaic474   Bamboo Stairs475
+    Bamboo Mosaic Stairs476   Bamboo Slab477   Bamboo Mosaic Slab478   Bamboo Fence479   Bamboo Fence Gate480
+    Bamboo Door481   Bamboo Trapdoor482   Bamboo Pressure Plate483   Bamboo Button484   Smooth Stone485
+    Stone Bricks486   Cracked Stone Bricks487   Chiseled Stone Bricks488   Mossy Stone Bricks489   Polished Granite490
+    Polished Diorite491   Polished Andesite492   Chiseled Deepslate493   Polished Deepslate494   Deepslate Bricks495
+    Cracked Deepslate Bricks496   Deepslate Tiles497   Cracked Deepslate Tiles498   Reinforced Deepslate499   Chiseled Tuff500
+    Polished Tuff501   Tuff Bricks502   Chiseled Tuff Bricks503   Bricks504   Mud Bricks505
+    Packed Mud506   Chiseled Sandstone507   Smooth Sandstone508   Cut Sandstone509   Chiseled Red Sandstone510
+    Smooth Red Sandstone511   Cut Red Sandstone512   Red Nether Bricks513   Polished Basalt514   Gilded Blackstone515
+    Chiseled Polished Blackstone516   Polished Blackstone517   Polished Blackstone Bricks518   Cracked Polished Blackstone Bricks519   End Stone520
+    Stone Stairs521   Cobblestone Stairs522   Mossy Cobblestone Stairs523   Stone Brick Stairs524   Mossy Stone Brick Stairs525
+    Granite Stairs526   Diorite Stairs527   Polished Diorite Stairs528   Andesite Stairs529   Polished Andesite Stairs530
+    Cobbled Deepslate Stairs531   Polished Deepslate Stairs532   Deepslate Brick Stairs533   Deepslate Tile Stairs534   Tuff Stairs535
+    Polished Tuff Stairs536   Tuff Brick Stairs537   Brick Stairs538   Mud Brick Stairs539   Sandstone Stairs540
+    Smooth Sandstone Stairs541   Red Sandstone Stairs542   Smooth Red Sandstone Stairs543   Prismarine Brick Stairs544   Dark Prismarine Stairs545
+    Red Nether Brick Stairs546   Blackstone Stairs547   Polished Blackstone Stairs548   Polished Blackstone Brick Stairs549   End Stone Brick Stairs550
+    Purpur Stairs551   Polished Granite Stairs552   Prismarine Stairs553   Stone Slab554   Cobblestone Slab555
+    Mossy Cobblestone Slab556   Stone Brick Slab557   Mossy Stone Brick Slab558   Granite Slab559   Diorite Slab560
+    Polished Diorite Slab561   Andesite Slab562   Polished Andesite Slab563   Cobbled Deepslate Slab564   Polished Deepslate Slab565
+    Deepslate Brick Slab566   Deepslate Tile Slab567   Tuff Slab568   Polished Tuff Slab569   Tuff Brick Slab570
+    Brick Slab571   Mud Brick Slab572   Sandstone Slab573   Smooth Sandstone Slab574   Red Sandstone Slab575
+    Smooth Red Sandstone Slab576   Prismarine Brick Slab577   Dark Prismarine Slab578   Red Nether Brick Slab579   Blackstone Slab580
+    Polished Blackstone Slab581   Polished Blackstone Brick Slab582   End Stone Brick Slab583   Purpur Slab584   Polished Granite Slab585
+    Prismarine Slab586   Smooth Stone Slab587   Cut Sandstone Slab588   Cut Red Sandstone Slab589   White Wall Banner590
+    Light Gray Wall Banner591   Gray Wall Banner592   Black Wall Banner593   Brown Wall Banner594   Red Wall Banner595
+    Orange Wall Banner596   Yellow Wall Banner597   Cyan Wall Banner598   Pink Wall Banner599   Magenta Wall Banner600
+    Purple Wall Banner601   Blue Wall Banner602   Light Blue Wall Banner603   Green Wall Banner604   Lime Wall Banner605
+    Cobblestone Wall606   Mossy Cobblestone Wall607   Stone Brick Wall608   Mossy Stone Brick Wall609   Granite Wall610
+    Diorite Wall611   Andesite Wall612   Cobbled Deepslate Wall613   Polished Deepslate Wall614   Deepslate Brick Wall615
+    Deepslate Tile Wall616   Tuff Wall617   Polished Tuff Wall618   Tuff Brick Wall619   Brick Wall620
+    Mud Brick Wall621   Sandstone Wall622   Red Sandstone Wall623   Red Nether Brick Wall624   Blackstone Wall625
+    Polished Blackstone Wall626   Polished Blackstone Brick Wall627   End Stone Brick Wall628   Prismarine Wall629   Nether Brick Wall630
+    Stone Button631   Polished Blackstone Button632   Stone Pressure Plate633   Polished Blackstone Pressure Plate634   Block of Coal635
+    Block of Iron636   Block of Gold637   Block of Redstone638   Block of Emerald639   Block of Lapis Lazuli640
+    Block of Diamond641   Block of Netherite642   Iron Bars643   Iron Door644   Iron Trapdoor645
+    Heavy Weighted Pressure Plate646   Light Weighted Pressure Plate647   Chain648   Block of Quartz649   Quartz Stairs650
+    Quartz Slab651   Chiseled Quartz Block652   Quartz Bricks653   Quartz Pillar654   Smooth Quartz Block655
+    Smooth Quartz Stairs656   Smooth Quartz Slab657   Block of Copper658   Chiseled Copper659   Copper Grate660
+    Cut Copper661   Cut Copper Stairs662   Cut Copper Slab663   Copper Door664   Copper Trapdoor665
+    Copper Bulb666   Exposed Copper667   Exposed Chiseled Copper668   Exposed Copper Grate669   Exposed Cut Copper670
+    Exposed Cut Copper Stairs671   Exposed Cut Copper Slab672   Exposed Copper Door673   Exposed Copper Trapdoor674   Exposed Copper Bulb675
+    Weathered Copper676   Weathered Chiseled Copper677   Weathered Copper Grate678   Weathered Cut Copper679   Weathered Cut Copper Stairs680
+    Weathered Cut Copper Slab681   Weathered Copper Door682   Weathered Copper Trapdoor683   Weathered Copper Bulb684   Oxidized Copper685
+    Oxidized Chiseled Copper686   Oxidized Copper Grate687   Oxidized Cut Copper688   Oxidized Cut Copper Stairs689   Oxidized Cut Copper Slab690
+    Oxidized Copper Door691   Oxidized Copper Trapdoor692   Oxidized Copper Bulb693   Waxed Block of Copper694   Waxed Chiseled Copper695
+    Waxed Copper Grate696   Waxed Cut Copper697   Waxed Cut Copper Stairs698   Waxed Cut Copper Slab699   Waxed Copper Door700
+    Waxed Copper Trapdoor701   Waxed Copper Bulb702   Waxed Exposed Copper703   Waxed Exposed Chiseled Copper704   Waxed Exposed Copper Grate705
+    Waxed Exposed Cut Copper706   Waxed Exposed Cut Copper Stairs707   Waxed Exposed Cut Copper Slab708   Waxed Exposed Copper Door709   Waxed Exposed Copper Trapdoor710
+    Waxed Exposed Copper Bulb711   Waxed Weathered Copper712   Waxed Weathered Chiseled Copper713   Waxed Weathered Copper Grate714   Waxed Weathered Cut Copper715
+    Waxed Weathered Cut Copper Stairs716   Waxed Weathered Cut Copper Slab717   Waxed Weathered Copper Door718   Waxed Weathered Copper Trapdoor719   Waxed Weathered Copper Bulb720
+    Waxed Oxidized Copper721   Waxed Oxidized Chiseled Copper722   Waxed Oxidized Copper Grate723   Waxed Oxidized Cut Copper724   Waxed Oxidized Cut Copper Stairs725
+    Waxed Oxidized Cut Copper Slab726   Waxed Oxidized Copper Door727   Waxed Oxidized Copper Trapdoor728   Waxed Oxidized Copper Bulb729   Ice730
+    Packed Ice731   Blue Ice732   Snow Block733   Snow734   Moss Block735
+    Moss Carpet736   Pointed Dripstone737   Obsidian738   Crying Obsidian739   Soul Sand740
+    Soul Soil741   Bone Block742   Glowstone743   Amethyst Cluster744   Vine745
+    Dried Kelp Block746   Sponge747   Wet Sponge748   Melon749   Pumpkin750
+    Carved Pumpkin751   Jack o'Lantern752   Hay Bale753   Honeycomb Block754   Slime Block755
+    Honey Block756   Ochre Froglight757   Verdant Froglight758   Pearlescent Froglight759   Sculk Block760
+    Sculk Vein761   Sculk Catalyst762   Sculk Shrieker763   Sculk Sensor764   Cobweb765
+    Torch766   Soul Torch767   Redstone Torch768   Lantern769   Soul Lantern770
+    End Rod771   Redstone Lamp772   Crafting Table773   Stonecutter774   Cartography Table775
+    Fletching Table776   Smithing Table777   Grindstone778   Loom779   Campfire780
+    Soul Campfire781   Composter782   Note Block783   Jukebox784   Enchanting Table785
+    Cauldron786   Bell787   Beacon788   Conduit789   Ladder790
+    Lightning Rod791   Bookshelf792   Lectern793   Tinted Glass794   Skeleton Skull795
+    Wither Skeleton Skull796   Player Head797   Zombie Head798   Creeper Head799   Piglin Head800
+    Dragon Head801   Skeleton Wall Skull802   Wither Skeleton Wall Skull803   Player Wall Head804   Zombie Wall Head805
+    Creeper Wall Head806   Piglin Wall Head807   Dragon Wall Head808   Redstone Repeater809   Redstone Comparator810
+    Lever811   Calibrated Sculk Sensor812   Tripwire813   Daylight Detector814   Piston815
+    Sticky Piston816   Observer817   TNT818   Attached Melon Stem819   Attached Pumpkin Stem820
+    Fire821   Cocoa822   Cactus823   Sugar Cane824   Bamboo825
+    Sweet Berry Bush826   Frosted Ice827   Redstone Wire828   Soul Fire829   Pale Oak Log830
+    Pale Oak Wood831   Stripped Pale Oak Log832   Stripped Pale Oak Wood833   Pale Oak Planks834   Pale Oak Stairs835
+    Pale Oak Slab836   Pale Oak Fence837   Pale Oak Fence Gate838   Pale Oak Door839   Pale Oak Trapdoor840
+    Pale Oak Pressure Plate841   Pale Oak Button842   Resin Block843   Resin Bricks844   Resin Brick Stairs845
+    Resin Brick Slab846   Resin Brick Wall847   Chiseled Resin Bricks848   Pale Moss Block849   Pale Moss Carpet850
+    Pale Hanging Roots851   Pale Oak Leaves852   Closed Eye Flower853   Open Eye Flower854   Gurgle Heart855
+    wildflowers856  leaf_litter857  firefly_bush858  bush859  tall_dry_grass&short_dry_grass860  
+    cactus_flower861  
