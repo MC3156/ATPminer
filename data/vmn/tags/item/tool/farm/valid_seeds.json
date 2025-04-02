@@ -1,8 +1,0 @@
-{
-    "replace": false,
-    "values": [
-        "#minecraft:villager_plantable_seeds",
-        "minecraft:pumpkin_seeds",
-        "minecraft:melon_seeds"
-    ]
-}
