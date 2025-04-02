@@ -1,0 +1,11 @@
+{
+    "condition": "minecraft:entity_properties",
+    "predicate": {
+        "equipment": {
+            "mainhand": {
+                "tag": "vmn:tool/netherite_tools"
+            }
+        }
+    },
+    "entity": "this"
+}

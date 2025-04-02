@@ -1,0 +1,28 @@
+{
+    "criteria": {
+        "cube_chain": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "display": {
+        "description": "启用矩形挖掘，使用参数配置，以规整的立方体空间连锁挖掘\nEnable Cuboid Mining: Mines blocks in configured rectangular spaces",
+        "icon": {
+            "item": "minecraft:smooth_stone"
+        },
+        "title": {"text":"方块的魅力"},
+        "announce_to_chat": false,
+        "frame": "task",
+        "hidden": false,
+        "show_toast": true
+    },
+    "requirements": [
+        [
+            "cube_chain"
+        ]
+    ],
+    "sends_telemetry_event": false,
+    "parent": "vmn:tutorial/root",
+    "rewards": {
+        "function": "vmn:main/vmn/advancement_reward"
+    }
+}

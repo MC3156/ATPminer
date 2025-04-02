@@ -1,0 +1,35 @@
+##计分板 1.20
+
+scoreboard objectives add dp_vmn.pitcher_plant minecraft.mined:minecraft.pitcher_plant
+scoreboard objectives add dp_vmn.pitcher_crop minecraft.mined:minecraft.pitcher_crop
+scoreboard objectives add dp_vmn.torchflower minecraft.mined:minecraft.torchflower
+scoreboard objectives add dp_vmn.stripped_cherry_log minecraft.mined:minecraft.stripped_cherry_log
+scoreboard objectives add dp_vmn.pink_petals minecraft.mined:minecraft.pink_petals
+scoreboard objectives add dp_vmn.cherry_wood minecraft.mined:minecraft.cherry_wood
+scoreboard objectives add dp_vmn.stripped_cherry_wood minecraft.mined:minecraft.stripped_cherry_wood
+scoreboard objectives add dp_vmn.cherry_planks minecraft.mined:minecraft.cherry_planks
+scoreboard objectives add dp_vmn.cherry_stairs minecraft.mined:minecraft.cherry_stairs
+scoreboard objectives add dp_vmn.cherry_slab minecraft.mined:minecraft.cherry_slab
+scoreboard objectives add dp_vmn.cherry_fence minecraft.mined:minecraft.cherry_fence
+scoreboard objectives add dp_vmn.cherry_fence_gate minecraft.mined:minecraft.cherry_fence_gate
+scoreboard objectives add dp_vmn.cherry_door minecraft.mined:minecraft.cherry_door
+scoreboard objectives add dp_vmn.cherry_trapdoor minecraft.mined:minecraft.cherry_trapdoor
+scoreboard objectives add dp_vmn.cherry_pressure_plate minecraft.mined:minecraft.cherry_pressure_plate
+scoreboard objectives add dp_vmn.cherry_button minecraft.mined:minecraft.cherry_button
+scoreboard objectives add dp_vmn.bamboo_block minecraft.mined:minecraft.bamboo_block
+scoreboard objectives add dp_vmn.stripped_bamboo_block minecraft.mined:minecraft.stripped_bamboo_block
+scoreboard objectives add dp_vmn.bamboo_planks minecraft.mined:minecraft.bamboo_planks
+scoreboard objectives add dp_vmn.bamboo_mosaic minecraft.mined:minecraft.bamboo_mosaic
+scoreboard objectives add dp_vmn.bamboo_stairs minecraft.mined:minecraft.bamboo_stairs
+scoreboard objectives add dp_vmn.bamboo_mosaic_stairs minecraft.mined:minecraft.bamboo_mosaic_stairs
+scoreboard objectives add dp_vmn.bamboo_slab minecraft.mined:minecraft.bamboo_slab
+scoreboard objectives add dp_vmn.bamboo_mosaic_slab minecraft.mined:minecraft.bamboo_mosaic_slab
+scoreboard objectives add dp_vmn.bamboo_fence minecraft.mined:minecraft.bamboo_fence
+scoreboard objectives add dp_vmn.bamboo_fence_gate minecraft.mined:minecraft.bamboo_fence_gate
+scoreboard objectives add dp_vmn.bamboo_door minecraft.mined:minecraft.bamboo_door
+scoreboard objectives add dp_vmn.bamboo_trapdoor minecraft.mined:minecraft.bamboo_trapdoor
+scoreboard objectives add dp_vmn.bamboo_pressure_plate minecraft.mined:minecraft.bamboo_pressure_plate
+scoreboard objectives add dp_vmn.bamboo_button minecraft.mined:minecraft.bamboo_button
+scoreboard objectives add dp_vmn.piglin_head minecraft.mined:minecraft.piglin_head
+scoreboard objectives add dp_vmn.piglin_wall_head minecraft.mined:minecraft.piglin_wall_head
+scoreboard objectives add dp_vmn.calibrated_sculk_sensor minecraft.mined:minecraft.calibrated_sculk_sensor

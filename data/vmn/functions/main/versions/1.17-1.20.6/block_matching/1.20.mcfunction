@@ -1,0 +1,36 @@
+##方块匹配 1.20
+
+execute if score #block_value dp_vmn.temp matches 42 if block ~ ~ ~ minecraft:torchflower run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 47 if block ~ ~ ~ minecraft:pitcher_plant run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 58 if block ~ ~ ~ minecraft:pitcher_crop[age=4,half=lower] run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 61 if block ~ ~ ~ minecraft:torchflower run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 123 if block ~ ~ ~ minecraft:stripped_cherry_log run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 344 if block ~ ~ ~ minecraft:pink_petals run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 438 if block ~ ~ ~ minecraft:cherry_wood run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 439 if block ~ ~ ~ minecraft:stripped_cherry_wood run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 440 if block ~ ~ ~ minecraft:cherry_planks run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 441 if block ~ ~ ~ minecraft:cherry_stairs run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 442 if block ~ ~ ~ minecraft:cherry_slab run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 443 if block ~ ~ ~ minecraft:cherry_fence run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 444 if block ~ ~ ~ minecraft:cherry_fence_gate run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 445 if block ~ ~ ~ minecraft:cherry_door run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 446 if block ~ ~ ~ minecraft:cherry_trapdoor run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 447 if block ~ ~ ~ minecraft:cherry_pressure_plate run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 448 if block ~ ~ ~ minecraft:cherry_button run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 471 if block ~ ~ ~ minecraft:bamboo_block run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 472 if block ~ ~ ~ minecraft:stripped_bamboo_block run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 473 if block ~ ~ ~ minecraft:bamboo_planks run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 474 if block ~ ~ ~ minecraft:bamboo_mosaic run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 475 if block ~ ~ ~ minecraft:bamboo_stairs run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 476 if block ~ ~ ~ minecraft:bamboo_mosaic_stairs run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 477 if block ~ ~ ~ minecraft:bamboo_slab run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 478 if block ~ ~ ~ minecraft:bamboo_mosaic_slab run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 479 if block ~ ~ ~ minecraft:bamboo_fence run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 480 if block ~ ~ ~ minecraft:bamboo_fence_gate run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 481 if block ~ ~ ~ minecraft:bamboo_door run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 482 if block ~ ~ ~ minecraft:bamboo_trapdoor run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 483 if block ~ ~ ~ minecraft:bamboo_pressure_plate run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 484 if block ~ ~ ~ minecraft:bamboo_button run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 800 if block ~ ~ ~ minecraft:piglin_head run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 807 if block ~ ~ ~ minecraft:piglin_wall_head run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 812 if block ~ ~ ~ minecraft:calibrated_sculk_sensor run scoreboard players set #temp_execute dp_vmn.temp 1

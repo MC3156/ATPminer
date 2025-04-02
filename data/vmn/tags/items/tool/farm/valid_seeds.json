@@ -1,0 +1,23 @@
+{
+    "replace": false,
+    "values": [
+        {
+            "id": "#minecraft:villager_plantable_seeds",
+            "required": false
+        },
+        "minecraft:wheat_seeds",
+        "minecraft:potato",
+        "minecraft:carrot",
+        "minecraft:beetroot_seeds",
+        {
+            "id": "minecraft:torchflower_seeds",
+            "required": false
+        },
+        {
+            "id": "minecraft:pitcher_pod",
+            "required": false
+        },
+        "minecraft:pumpkin_seeds",
+        "minecraft:melon_seeds"
+    ]
+}

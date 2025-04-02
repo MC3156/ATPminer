@@ -51,7 +51,7 @@
 ## 功能简介(Function)
 
 1.连锁采集兼容**物品堆叠组件**和**时运**、**耐久**、**精准采集**等魔咒，工具耐久度较低时会停止连锁，会处理玩家饱食度；
-2.多数方块需要热键才可以触发连锁(避免过度破坏)，未启用强制“热键连锁”时，这些方块默认自动连锁：**矿石、（去皮）原木、花草、珊瑚、真菌、农作物、成熟的可可豆、仙人掌、甘蔗、竹子、生瓜、成熟甜浆果丛**，在**1.21.2**以后可以使用**左Ctrl**或**左Shift**热键(未开启“热键连锁”时，遵循Shift，**需要防误触请开启Ctrl！**)
+2.多数方块需要热键才可以触发连锁(避免过度破坏)，未启用强制“热键连锁”时，这些方块默认自动连锁：**矿石、（去皮）原木、花草、珊瑚、真菌、农作物、成熟的可可豆、仙人掌、甘蔗、竹子、生瓜、成熟甜浆果丛**；
 3.检测到方块数量较大时，会启用异步连锁(每游戏刻处理固定数量的方块，扩散过程可视化)避免卡顿，更换手持物品、传送、退出游戏等等都会停止异步连锁；
 4.安装数据包后，所有功能默认“自选”，即不同玩家可以自己选择是否开启各项拓展功能，在**全局设置**中可以修改；
 5.数据包不支持少数服务端（例如 Folia），不兼容部分插件（若插件改写了命令语法），不兼容领地保护，兼容多数生电辅助模组；
@@ -59,7 +59,7 @@
 下面是各种拓展功能的介绍。
 
 *1. Chain harvesting is compatible with item components and enchantments like **Fortune**, **Unbreaking**, and **Silk Touch**. When the tool's durability is low, chain harvesting will stop automatically.*
-*2. Most blocks require a hotkey to trigger chain reactions (to prevent excessive destruction). When the "Hotkey Chain" enforcement is not enabled, the following blocks automatically chain by default: **Ores, (stripped) logs, flowers/plants, corals, fungi, crops, mature cocoa pods, cacti, sugar cane, bamboo, melon stems, mature sweet berry bushes**. After **1.21.2**, you can use **Left Ctrl** or **Left Shift** as hotkeys  (When "Hotkey Chaining" is disabled, Shift takes priority. **Enable Ctrl for anti-ghost-touch!**)*
+*2. Most blocks require a hotkey to trigger chain reactions (to prevent excessive destruction). When the "Hotkey Chain" enforcement is not enabled, the following blocks automatically chain by default: **Ores, (stripped) logs, flowers/plants, corals, fungi, crops, mature cocoa pods, cacti, sugar cane, bamboo, melon stems, mature sweet berry bushes**.*
 *3. When a large number of blocks are detected, asynchronous chaining will be enabled (processing a fixed number of blocks per game tick with visible diffusion effects) to prevent lag. The asynchronous chaining will automatically stop if the player: Switches tools, Teleports, or Exits the game.*
 *4. After installing the datapack, all features are optional by default—meaning each player can individually choose whether to enable specific expanded functionalities. This behavior can be modified in **Global Settings**.*
 *5. Compatibility Notes: Not supported on some server software (e.g., **Folia**); Incompatible with some plugins (if they modify command syntax); Not compatible with land protection plugins.*

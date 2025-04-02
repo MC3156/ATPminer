@@ -1,0 +1,21 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:oak_leaves",
+        "minecraft:birch_leaves",
+        "minecraft:acacia_leaves",
+        "minecraft:azalea_leaves",
+        "minecraft:jungle_leaves",
+        "minecraft:spruce_leaves",
+        "minecraft:dark_oak_leaves",
+        "minecraft:flowering_azalea_leaves",
+        {
+            "id": "minecraft:mangrove_leaves",
+            "required": false
+        },
+        {
+            "id": "minecraft:cherry_leaves",
+            "required": false
+        }
+    ]
+}

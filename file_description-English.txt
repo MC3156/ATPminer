@@ -338,5 +338,4 @@ If you have questions about this documentation, please contact the author throug
     Pale Oak Pressure Plate841   Pale Oak Button842   Resin Block843   Resin Bricks844   Resin Brick Stairs845
     Resin Brick Slab846   Resin Brick Wall847   Chiseled Resin Bricks848   Pale Moss Block849   Pale Moss Carpet850
     Pale Hanging Roots851   Pale Oak Leaves852   Closed Eye Flower853   Open Eye Flower854   Gurgle Heart855
-    wildflowers856  leaf_litter857  firefly_bush858  bush859  tall_dry_grass&short_dry_grass860  
-    cactus_flower861  
+    

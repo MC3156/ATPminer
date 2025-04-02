@@ -1,0 +1,32 @@
+##方块匹配 1.19
+
+execute if score #block_value dp_vmn.temp matches 16 if block ~ ~ ~ minecraft:mangrove_log run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 16 if block ~ ~ ~ minecraft:mangrove_roots run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 56 if block ~ ~ ~ minecraft:mangrove_leaves run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 71 if block ~ ~ ~ minecraft:mud run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 72 if block ~ ~ ~ minecraft:muddy_mangrove_roots run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 124 if block ~ ~ ~ minecraft:stripped_mangrove_log run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 427 if block ~ ~ ~ minecraft:mangrove_wood run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 428 if block ~ ~ ~ minecraft:stripped_mangrove_wood run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 429 if block ~ ~ ~ minecraft:mangrove_planks run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 430 if block ~ ~ ~ minecraft:mangrove_stairs run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 431 if block ~ ~ ~ minecraft:mangrove_slab run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 432 if block ~ ~ ~ minecraft:mangrove_fence run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 433 if block ~ ~ ~ minecraft:mangrove_fence_gate run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 434 if block ~ ~ ~ minecraft:mangrove_door run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 435 if block ~ ~ ~ minecraft:mangrove_trapdoor run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 436 if block ~ ~ ~ minecraft:mangrove_pressure_plate run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 437 if block ~ ~ ~ minecraft:mangrove_button run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 499 if block ~ ~ ~ minecraft:reinforced_deepslate run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 505 if block ~ ~ ~ minecraft:packed_mud run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 506 if block ~ ~ ~ minecraft:mud_bricks run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 539 if block ~ ~ ~ minecraft:mud_brick_stairs run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 572 if block ~ ~ ~ minecraft:mud_brick_slab run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 621 if block ~ ~ ~ minecraft:mud_brick_wall run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 757 if block ~ ~ ~ minecraft:ochre_froglight run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 758 if block ~ ~ ~ minecraft:verdant_froglight run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 759 if block ~ ~ ~ minecraft:pearlescent_froglight run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 760 if block ~ ~ ~ minecraft:sculk run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 761 if block ~ ~ ~ minecraft:sculk_vein run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 762 if block ~ ~ ~ minecraft:sculk_catalyst run scoreboard players set #temp_execute dp_vmn.temp 1
+execute if score #block_value dp_vmn.temp matches 763 if block ~ ~ ~ minecraft:sculk_shrieker run scoreboard players set #temp_execute dp_vmn.temp 1

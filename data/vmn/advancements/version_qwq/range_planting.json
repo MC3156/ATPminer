@@ -1,0 +1,193 @@
+{
+    "criteria": {
+        "farm_land(sneaking_mode+mainhand)": {
+            "trigger": "minecraft:item_used_on_block",
+            "conditions": {
+                "location": {
+                    "block": {
+                        "blocks": [
+                            "minecraft:farmland"
+                        ]
+                    }
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:entity_scores",
+                        "entity": "this",
+                        "scores": {
+                            "dp_vmn.ATPminer.auto_farm": 1,
+                            "dp_vmn.ATPminer.sneaking_mode": 1,
+                            "dp_vmn.sneaking_time": {
+                                "min": 1
+                            }
+                        }
+                    },
+                    {
+                        "condition": "minecraft:entity_properties",
+                        "entity": "this",
+                        "predicate": {
+                            "equipment": {
+                                "mainhand": {
+                                    "tag": "vmn:tool/farm/valid_seeds"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "farm_land(general+mainhand)": {
+            "trigger": "minecraft:item_used_on_block",
+            "conditions": {
+                "location": {
+                    "block": {
+                        "blocks": [
+                            "minecraft:farmland"
+                        ]
+                    }
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:entity_scores",
+                        "entity": "this",
+                        "scores": {
+                            "dp_vmn.ATPminer.auto_farm": 1,
+                            "dp_vmn.ATPminer.sneaking_mode": 0
+                        }
+                    },
+                    {
+                        "condition": "minecraft:entity_properties",
+                        "entity": "this",
+                        "predicate": {
+                            "equipment": {
+                                "mainhand": {
+                                    "tag": "vmn:tool/farm/valid_seeds"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "farm_land(sneaking_mode+offhand)": {
+            "trigger": "minecraft:item_used_on_block",
+            "conditions": {
+                "location": {
+                    "block": {
+                        "blocks": [
+                            "minecraft:farmland"
+                        ]
+                    }
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:entity_scores",
+                        "entity": "this",
+                        "scores": {
+                            "dp_vmn.ATPminer.auto_farm": 1,
+                            "dp_vmn.ATPminer.sneaking_mode": 1,
+                            "dp_vmn.sneaking_time": {
+                                "min": 1
+                            }
+                        }
+                    },
+                    {
+                        "condition": "minecraft:entity_properties",
+                        "entity": "this",
+                        "predicate": {
+                            "equipment": {
+                                "offhand": {
+                                    "tag": "vmn:tool/farm/valid_seeds"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "farm_land(general+offhand)": {
+            "trigger": "minecraft:item_used_on_block",
+            "conditions": {
+                "location": {
+                    "block": {
+                        "blocks": [
+                            "minecraft:farmland"
+                        ]
+                    }
+                },
+                "player": [
+                    {
+                        "condition": "minecraft:entity_scores",
+                        "entity": "this",
+                        "scores": {
+                            "dp_vmn.ATPminer.auto_farm": 1,
+                            "dp_vmn.ATPminer.sneaking_mode": 0
+                        }
+                    },
+                    {
+                        "condition": "minecraft:entity_properties",
+                        "entity": "this",
+                        "predicate": {
+                            "equipment": {
+                                "offhand": {
+                                    "tag": "vmn:tool/farm/valid_seeds"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "enabled": {
+            "trigger": "minecraft:tick",
+            "conditions": {
+                "player": [
+                    {
+                        "condition": "minecraft:value_check",
+                        "value": {
+                            "type": "minecraft:score",
+                            "target": {
+                                "type": "minecraft:context",
+                                "target": "this"
+                            },
+                            "score": "dp_vmn.ATPminer.basic"
+                        },
+                        "range": {
+                            "max": 0
+                        }
+                    },
+                    {
+                        "condition": "minecraft:value_check",
+                        "value": {
+                            "type": "minecraft:score",
+                            "target": {
+                                "type": "minecraft:fixed",
+                                "name": "#global.auto_farm"
+                            },
+                            "score": "dp_vmn.global_setting"
+                        },
+                        "range": {
+                            "max": 2,
+                            "min": 1
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "rewards": {
+        "function": "vmn:main/vmn/range_planting"
+    },
+    "requirements": [
+        [
+            "farm_land(general+mainhand)",
+            "farm_land(sneaking_mode+mainhand)",
+            "farm_land(general+offhand)",
+            "farm_land(sneaking_mode+offhand)"
+        ],
+        [
+            "enabled"
+        ]
+    ],
+    "sends_telemetry_event": false
+}

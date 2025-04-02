@@ -1,0 +1,17 @@
+{
+    "replace": false,
+    "values": [
+        {
+            "id": "minecraft:ochre_froglight",
+            "required": false
+        },
+        {
+            "id": "minecraft:verdant_froglight",
+            "required": false
+        },
+        {
+            "id": "minecraft:pearlescent_froglight",
+            "required": false
+        }
+    ]
+}

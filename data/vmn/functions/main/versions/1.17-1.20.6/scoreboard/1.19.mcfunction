@@ -1,0 +1,32 @@
+##计分板 1.19
+
+scoreboard objectives add dp_vmn.mangrove_log minecraft.mined:minecraft.mangrove_log
+scoreboard objectives add dp_vmn.mangrove_roots minecraft.mined:minecraft.mangrove_roots
+scoreboard objectives add dp_vmn.mangrove_leaves minecraft.mined:minecraft.mangrove_leaves
+scoreboard objectives add dp_vmn.mud minecraft.mined:minecraft.mud
+scoreboard objectives add dp_vmn.muddy_mangrove_roots minecraft.mined:minecraft.muddy_mangrove_roots
+scoreboard objectives add dp_vmn.stripped_mangrove_log minecraft.mined:minecraft.stripped_mangrove_log
+scoreboard objectives add dp_vmn.mangrove_wood minecraft.mined:minecraft.mangrove_wood
+scoreboard objectives add dp_vmn.stripped_mangrove_wood minecraft.mined:minecraft.stripped_mangrove_wood
+scoreboard objectives add dp_vmn.mangrove_planks minecraft.mined:minecraft.mangrove_planks
+scoreboard objectives add dp_vmn.mangrove_stairs minecraft.mined:minecraft.mangrove_stairs
+scoreboard objectives add dp_vmn.mangrove_slab minecraft.mined:minecraft.mangrove_slab
+scoreboard objectives add dp_vmn.mangrove_fence minecraft.mined:minecraft.mangrove_fence
+scoreboard objectives add dp_vmn.mangrove_fence_gate minecraft.mined:minecraft.mangrove_fence_gate
+scoreboard objectives add dp_vmn.mangrove_door minecraft.mined:minecraft.mangrove_door
+scoreboard objectives add dp_vmn.mangrove_trapdoor minecraft.mined:minecraft.mangrove_trapdoor
+scoreboard objectives add dp_vmn.mangrove_pressure_plate minecraft.mined:minecraft.mangrove_pressure_plate
+scoreboard objectives add dp_vmn.mangrove_button minecraft.mined:minecraft.mangrove_button
+scoreboard objectives add dp_vmn.reinforced_deepslate minecraft.mined:minecraft.reinforced_deepslate
+scoreboard objectives add dp_vmn.packed_mud minecraft.mined:minecraft.packed_mud
+scoreboard objectives add dp_vmn.mud_bricks minecraft.mined:minecraft.mud_bricks
+scoreboard objectives add dp_vmn.mud_brick_stairs minecraft.mined:minecraft.mud_brick_stairs
+scoreboard objectives add dp_vmn.mud_brick_slab minecraft.mined:minecraft.mud_brick_slab
+scoreboard objectives add dp_vmn.mud_brick_wall minecraft.mined:minecraft.mud_brick_wall
+scoreboard objectives add dp_vmn.ochre_froglight minecraft.mined:minecraft.ochre_froglight
+scoreboard objectives add dp_vmn.verdant_froglight minecraft.mined:minecraft.verdant_froglight
+scoreboard objectives add dp_vmn.pearlescent_froglight minecraft.mined:minecraft.pearlescent_froglight
+scoreboard objectives add dp_vmn.sculk minecraft.mined:minecraft.sculk
+scoreboard objectives add dp_vmn.sculk_vein minecraft.mined:minecraft.sculk_vein
+scoreboard objectives add dp_vmn.sculk_catalyst minecraft.mined:minecraft.sculk_catalyst
+scoreboard objectives add dp_vmn.sculk_shrieker minecraft.mined:minecraft.sculk_shrieker

@@ -1,0 +1,10 @@
+{
+    "values": [
+        "#minecraft:banners",
+        {
+            "id": "#minecraft:all_signs",
+            "required": false
+        },
+        "#minecraft:signs"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "criteria": {
+        "fast_rot": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "display": {
+        "description": "启用快速落叶，在连锁伐木的基础上加速树叶枯萎\nEnable Fast Leaf Decay: Accelerates leaf decay after tree felling",
+        "icon": {
+            "item": "minecraft:oak_leaves"
+        },
+        "title": {"text":"新陈代谢"},
+        "announce_to_chat": false,
+        "frame": "task",
+        "hidden": false,
+        "show_toast": true
+    },
+    "requirements": [
+        [
+            "fast_rot"
+        ]
+    ],
+    "sends_telemetry_event": false,
+    "parent": "vmn:tutorial/root",
+    "rewards": {
+        "function": "vmn:main/vmn/advancement_reward"
+    }
+}

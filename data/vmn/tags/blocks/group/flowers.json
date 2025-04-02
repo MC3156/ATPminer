@@ -1,0 +1,56 @@
+{
+    "replace": false,
+    "values": [
+        {
+            "id": "minecraft:short_grass",
+            "required": false
+        },
+        {
+            "id": "minecraft:grass",
+            "required": false
+        },
+        "minecraft:tall_grass",
+        "minecraft:dandelion",
+        "minecraft:poppy",
+        "minecraft:blue_orchid",
+        "minecraft:allium",
+        "minecraft:azure_bluet",
+        "minecraft:red_tulip",
+        "minecraft:pink_tulip",
+        "minecraft:white_tulip",
+        "minecraft:orange_tulip",
+        "minecraft:oxeye_daisy",
+        "minecraft:cornflower",
+        "minecraft:lily_of_the_valley",
+        "minecraft:wither_rose",
+        "minecraft:sunflower",
+        "minecraft:lilac",
+        "minecraft:rose_bush",
+        "minecraft:peony",
+        {
+            "id": "minecraft:pitcher_plant",
+            "required": false
+        },
+        {
+            "id": "minecraft:torchflower",
+            "required": false
+        },
+        "minecraft:brown_mushroom",
+        "minecraft:red_mushroom",
+        "minecraft:fern",
+        "minecraft:dead_bush",
+        {
+            "id": "minecraft:pink_petals",
+            "required": false
+        },
+        "minecraft:spore_blossom",
+        "minecraft:crimson_roots",
+        "minecraft:warped_roots",
+        "minecraft:nether_sprouts",
+        "minecraft:large_fern",
+        "minecraft:lily_pad",
+        "minecraft:seagrass",
+        "minecraft:tall_seagrass",
+        "minecraft:sea_pickle"
+    ]
+}
